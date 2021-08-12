@@ -9,3 +9,13 @@ before_install:
 
 script:
   - docker run -e CI=true docker-learning npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-learning"
+  env: "Dockerlearning-env"
+  bucket_name: "elasticbeanstalk-us-east-2-215219749137"
+  bucket_path: "docker-learning"
+  on:
+    branch: master
